@@ -1,0 +1,16 @@
+---
+- hosts: all
+  vars:
+    local_home: "{{ lookup('env','HOME') }}"
+    local_user: "{{ lookup('env','USER') }}"
+  tasks:
+    - name: copy ssh pub key
+      authorized_key: user="{{ local_user }}" key="{{ lookup('file',"/Users/jolexa/.ssh/id_rsa.pub") }}"
+
+    - name: copy and update dotfiles
+      copy: src={{ item }} dest={{ ansible_env.HOME }}/.{{ item | basename }}
+      with_fileglob:
+        - files/*
+
+
+# vim:ft=ansible:

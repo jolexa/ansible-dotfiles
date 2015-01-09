@@ -1,0 +1,37 @@
+" make sure our tabs are 4
+set tabstop=4
+set shiftwidth=4
+set textwidth=80
+
+" make sure indents are correct
+set autoindent
+set smartindent
+
+" don't outdent comment lines when they are smartindented help smartindent
+inoremap # X#
+
+" ident
+filetype indent on
+
+" honor modeline if available
+set modeline
+
+" whitespace avoidance
+" This line sets the color and match name.
+:highlight ExtraWhitespace ctermbg=red guibg=red
+" Insert{Enter,Leave} means that it won't match while typing.
+" It is not perfect because the highlighting goes away if you scroll over it.
+au InsertEnter * match ExtraWhiteSpace /\s\+\%#\@<!$/
+au InsertLeave * match ExtraWhiteSpace /\s\+\%#\@<!$/
+
+" When editing a file, always jump to the last cursor position
+autocmd BufReadPost *
+	\ if ! exists("g:leave_my_cursor_position_alone") |
+	\     if line("'\"") > 0 && line ("'\"") <= line("$") |
+	\         exe "normal g'\"" |
+	\     endif |
+	\ endif
+
+" git stuff
+" Set tw 72 for commit messages
+autocmd BufNewFile,BufRead *.git/COMMIT_EDITMSG setlocal tw=72
