@@ -1,11 +1,32 @@
+# Test for an interactive shell.  There is no need to set anything
+# past this point for scp and rcp, and it's important to refrain from
+# outputting anything in those cases.
+if [[ $- != *i* ]] ; then
+    # Shell is non-interactive.  Be done now!
+    return
+fi
 
+# Enable bash-completion
+[[ -f $HOME/.bash-completion.sh ]] && source $HOME/.bash-completion.sh
+# Enable bash aliases in seperate file for maintenance reasons
+[[ -f $HOME/.bash_aliases ]] && source $HOME/.bash_aliases
+export EDITOR=vim
+# PATHing
+export PATH="$HOME/bin:${PATH}"
+
+# Prefer to set some HIST variables
+# Colon seperated list of commands to ignore
+export HISTIGNORE="ls:fg:bg"
+export HISTCONTROL=ignoredups
+# Keep 1000 lines in .bash_history (default is 500)
+export HISTSIZE=1000
+export HISTFILESIZE=1000
 
 # git prompt helpers
 get_sha() {
 	git rev-parse --short HEAD 2>/dev/null
 }
 [[ -e $HOME/.git-prompt.sh ]] && source $HOME/.git-prompt.sh
-
 # accomendate for sudo
 PROMPT_DIRTRIM=5
 if [[ $(id -u) == 0 ]]; then
