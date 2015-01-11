@@ -12,5 +12,11 @@
       with_fileglob:
         - files/*
 
+#    - name: copy and update vim plugins
+#      copy: src=files/vim/ dest={{ ansible_env.HOME }}/.vim/ force=yes
+    - name: rsync vim plugins
+      synchronize: src=files/vim/ dest={{ ansible_env.HOME }}/.vim delete=yes
+
+
 
 # vim:ft=ansible:
