@@ -12,7 +12,7 @@ fi
 [[ -f $HOME/.bash_aliases ]] && source $HOME/.bash_aliases
 export EDITOR=vim
 # PATHing
-export PATH="$HOME/bin:${PATH}"
+export PATH="$HOME/bin:/usr/sbin:/sbin:${PATH}"
 
 # Prefer to set some HIST variables
 # Colon seperated list of commands to ignore
