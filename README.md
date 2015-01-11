@@ -12,7 +12,7 @@ Runs the `site.yml` playbook with the `--check` and `--diff` flags
 
 Runs the `site.yml` playbook against the localhost only
 
-## make install-remote
+## make install-172
 
 Runs the `site.yml` playbook against remote machines based on hosts that have
-already been seen
+already been seen in the 172.16.0.0/12 network
