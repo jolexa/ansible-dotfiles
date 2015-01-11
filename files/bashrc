@@ -27,8 +27,11 @@ get_sha() {
 	git rev-parse --short HEAD 2>/dev/null
 }
 [[ -e $HOME/.git-prompt.sh ]] && source $HOME/.git-prompt.sh
-# accomendate for sudo
+GIT_PS1_SHOWDIRTYSTATE=1
+GIT_PS1_SHOWUNTRACKEDFILES=1
+GIT_PS1_SHOWUPSTREAM="verbose"
 PROMPT_DIRTRIM=5
+# accommodate for sudo
 if [[ $(id -u) == 0 ]]; then
 	PS1='\[\e[33;0;31m\]\u@\[\e[33;1;32m\]\h:\[\e[33;1;34m\]\w$(__git_ps1 " [%s $(get_sha)] ")\n\[\e[33;0;31m\]#\[\e[0m\] '
 else
