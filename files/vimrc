@@ -1,11 +1,17 @@
-" make sure our tabs are 4
-set tabstop=4
-set shiftwidth=4
-set textwidth=80
-
-" make sure indents are correct
-set autoindent
+set expandtab           " enter spaces when tab is pressed
+set textwidth=80        " break lines when line length increases
+set tabstop=4           " use 4 spaces to represent tab
+set softtabstop=4
+set shiftwidth=4        " number of spaces to use for auto indent
+set autoindent          " copy indent from current line when starting a new line
 set smartindent
+set ruler
+let &t_Co=256
+try
+    colorscheme flattr
+catch
+    " just go with the default
+endtry
 
 " don't outdent comment lines when they are smartindented help smartindent
 inoremap # X#
