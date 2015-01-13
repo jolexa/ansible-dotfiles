@@ -14,6 +14,8 @@
 
 #    - name: copy and update vim plugins
 #      copy: src=files/vim/ dest={{ ansible_env.HOME }}/.vim/ force=yes
+    - name: ensure dir exists or rsync will fail
+      file: path={{ ansible_env.HOME }}/.vim state=directory
     - name: rsync vim plugins
       synchronize: src=files/vim/ dest={{ ansible_env.HOME }}/.vim delete=yes
       synchronize: src=files/vim-colorschemes/colors/
