@@ -10,7 +10,9 @@ fi
 [[ -f $HOME/.bash-completion.sh ]] && source $HOME/.bash-completion.sh
 # Enable bash aliases in seperate file for maintenance reasons
 [[ -f $HOME/.bash_aliases ]] && source $HOME/.bash_aliases
+
 export EDITOR=vim
+export LANG=en_US.UTF-8
 # PATHing
 export PATH="$HOME/bin:/usr/sbin:/sbin:${PATH}"
 
@@ -37,3 +39,10 @@ if [[ $(id -u) == 0 ]]; then
 else
 	PS1='\[\e[33;1;32m\]\h:\[\e[33;1;34m\]\w$(__git_ps1 " [%s $(get_sha)] ") \n$\[\e[0m\] '
 fi
+
+## Begin AWS
+# Put AWS credentials into environment if file exists
+[[ -f $HOME/.aws_creds ]] && source $HOME/.aws_creds
+export AWS_CONFIG_FILE=$HOME/.aws_config
+complete -C aws_completer aws
+## End AWS
