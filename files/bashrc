@@ -41,8 +41,16 @@ else
 fi
 
 ## Begin AWS
-# Put AWS credentials into environment if file exists
-[[ -f $HOME/.aws_creds ]] && source $HOME/.aws_creds
 export AWS_CONFIG_FILE=$HOME/.aws_config
+function awsenv() {
+    if [[ $1 == clear ]]; then
+        PS1="${_PS1}"; unalias aws; unalias s3cmd;
+    else
+        _PS1=${PS1}; PS1="(aws$1) ${PS1}"
+        alias aws="aws --profile $1"
+        alias s3cmd="s3cmd -c $HOME/.aws/s3cmd_creds_$1"
+    fi
+}
+# add bash completion
 complete -C aws_completer aws
 ## End AWS
