@@ -1,0 +1,3 @@
+# Ignore credentials file, best effort
+*cred*
+**/*cred*
