@@ -1,44 +1,3 @@
-# Copyright 1999-2005 Gentoo Foundation  
-# Distributed under the terms of the GNU General Public License v2  
-# 
-# /etc/screenrc
-#
-# This is the system wide screenrc.
-#
-# You can use this file to change the default behavior of screen system wide
-# or copy it to ~/.screenrc and use it as a starting point for your own
-# settings.
-#
-# Commands in this file are used to set options, bind screen functions to
-# keys, redefine terminal capabilities, and to automatically establish one or
-# more windows at the beginning of your screen session.
-#
-# This is not a comprehensive list of options, look at the screen manual for
-# details on everything that you can put in this file.
-#
-#
-
-# ==============================================================================
-# SCREEN SETTINGS
-# ==============================================================================
-
-# ESCAPE - the COMMAND CHARACTER
-# ===============================================================
-# escape ^aa  # default
-# escape ^pp  # suggested binding for emacs users
-
-
-# PASSWORD
-# ===============================================================
-# This commands sets the *internal* password for the screen session.
-# WARNING!! If this is set then a "lock" command will only let you in to the 
-# session after you enter the user's account password and then *also* 
-# the internal password for that session. This gives additional safety but,
-# if you forget the internal password then you cannot resume your session.
-# Use :password to generate a password
-# password ODSJQf.4IJN7E    # "1234"
-
-
 # VARIABLES
 # ===============================================================
 # No annoying audible bell, using "visual bell"
@@ -50,9 +9,6 @@
 
 # Don't display the copyright page
   startup_message off			# default: on
-
-# Uses nethack-style messages
-# nethack on				# default: off
 
 # Affects the copying of text regions
   crlf off				# default: off
@@ -353,7 +309,7 @@
 # Don't you want to start programs which need a DISPLAY ?
 # setenv DISPLAY ''
 
-#Custom Stuff
+# Custom Stuff added by jolexa
 term xterm
 caption always "%{= wb}$USER @ %H >> %-Lw%{= r}%50>%n* %t%{-}%+Lw%< %-=<< (%c.%s)"
 
