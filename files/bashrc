@@ -17,7 +17,7 @@ export LANG=en_US.UTF-8
 export PATH="$HOME/bin:/usr/sbin:/sbin:${PATH}"
 # local rubygems
 for i in $HOME/.gem/ruby/*/bin; do
-    PATH+=":$i"
+    export PATH+=":$i"
 done
 
 # Prefer to set some HIST variables
