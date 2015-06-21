@@ -3,5 +3,5 @@
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
 if [[ $(type -P keychain) ]]; then
-        eval `keychain -q --eval id_rsa_sps`
+        eval `keychain -q --eval id_rsa_sps sysops-jolexa`
 fi
