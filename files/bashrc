@@ -58,12 +58,12 @@ function awsenv() {
         alias aws="aws --profile $1"
         alias s3cmd="s3cmd -c $HOME/.aws/s3cmd_creds_$1"
         read_ini $HOME/.aws/credentials $1
-        KEY=INI__${1}__aws_access_key_id
-        SECRETKEY=INI__${1}__aws_secret_access_key
-        export AWS_ACCESS_KEY_ID=$(echo ${!KEY})
-        export AWS_SECRET_ACCESS_KEY=$(echo ${!SECRETKEY})
+        INI__KEY=INI__${1}__aws_access_key_id
+        INI__SECRETKEY=INI__${1}__aws_secret_access_key
+        export AWS_ACCESS_KEY_ID=$(echo ${!INI__KEY})
+        export AWS_SECRET_ACCESS_KEY=$(echo ${!INI__SECRETKEY})
         export AWS_DEFAULT_REGION=us-east-1 # this might cause hidden problems
-        unset KEY SECRETKEY
+        for i in "${!INI__*}"; do unset $i ;done
     fi
 }
 # add bash completion
