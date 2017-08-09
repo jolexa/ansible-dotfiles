@@ -13,11 +13,18 @@ catch
     " just go with the default
 endtry
 
+" make backspace work
+set backspace=indent,eol,start
+
 " don't outdent comment lines when they are smartindented help smartindent
-inoremap # X#
+inoremap # X#
+
+" Yanks go to clipboard
+set clipboard+=unnamed
 
 " ident
 filetype indent on
+syntax on
 
 " honor modeline if available
 set modeline
